@@ -32,6 +32,7 @@ def calculate_user_behavior(df):
 
 
 if __name__ == "__main__":
+    # Code to be executed when the script is run directly
     df = database.connect_to_database()
     if df is not None:
         df = data_processing.handle_missing_values(df)
@@ -39,8 +40,9 @@ if __name__ == "__main__":
             df = data_processing.fill_missing_values(df)
             if df is not None:
                 df = data_processing.impute_categorical_values(df)
-                
                 if df is not None:
+                    df = data_processing.replace_outliers(df)
+                    if df is not None:
                         print(df)
                 
 
