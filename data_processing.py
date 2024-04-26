@@ -1,4 +1,5 @@
 import pandas as pd
+import database
 
 # Handling Missing Values 
 def handle_missing_values(df):
@@ -110,4 +111,5 @@ def replace_outliers(df):
         return None
 
 # Apply outlier replacement function to DataFrame
+df = database.connect_to_database()
 df_cleaned = replace_outliers(df)

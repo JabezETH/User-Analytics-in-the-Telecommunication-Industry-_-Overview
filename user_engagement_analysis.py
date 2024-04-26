@@ -6,6 +6,21 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 
 
+if __name__ == "__main__":
+    # Code to be executed when the script is run directly
+    df = database.connect_to_database()
+    if df is not None:
+        df = data_processing.handle_missing_values(df)
+        if df is not None:
+            df = data_processing.fill_missing_values(df)
+            if df is not None:
+                df = data_processing.impute_categorical_values(df)
+                if df is not None:
+                    df = data_processing.replace_outliers(df)
+                    if df is not None:
+                        print(df)
+
+
 # Calculating customer engagment 
 def calculate_customer_engagment(df):
     try:
@@ -229,3 +244,4 @@ def find_optimal_k_elbow_method(data):
 
 
 find_optimal_k_elbow_method(selected_metrics)
+
